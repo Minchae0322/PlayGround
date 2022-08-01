@@ -2,9 +2,11 @@ package com.example.playground;
 
 import com.example.playground.pojo.Member;
 import com.example.playground.pojo.PlayGround;
+import com.example.playground.pojo.PlayGroundType;
 import com.example.playground.pojo.Team;
 import com.example.playground.repository.MemberRepository;
 import com.example.playground.repository.PlayGroundRepository;
+import com.example.playground.repository.PlayGroundTypeRepository;
 import com.example.playground.repository.TeamRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,12 +35,26 @@ public class MemberTeamTest {
 
 
     @Autowired
+    PlayGroundTypeRepository playGroundTypeRepository;
+
+    @Autowired
     EntityManager entityManager;
 
     @Test
     @Transactional
     public void playGroundTypeTest() {
+        PlayGroundType playGroundType1 = PlayGroundType.builder()
+                .name("캠퍼스2농구장")
+                .type("농구장").build();
+        playGroundTypeRepository.save(playGroundType1);
 
+        entityManager.flush();
+
+        PlayGround playGround1 = PlayGround.builder()
+                .name("캠퍼스2농구장").build();
+        playGround1.setPlayGroundTypeName(playGroundTypeRepository.findPlayGroundTypeByName("캠퍼스2농구장").get());
+
+        assertEquals("농구장", playGround1.getPlayGroundTypeName().getType());
 
 
 

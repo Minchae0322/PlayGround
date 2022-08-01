@@ -1,14 +1,13 @@
 package com.example.playground.pojo;
 
+import com.sun.istack.NotNull;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.GenericGenerator;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Getter
 @Setter
@@ -16,8 +15,11 @@ import javax.persistence.Id;
 @Entity(name = "PlayGround_type")
 public class PlayGroundType {
     @Id
+    @NotNull
     @GeneratedValue
-    @Column(name = "PLAYGROUND_NAME2")
+    private Long id;
+    @NotNull
+    @Column(name = "PLAYGROUND_TYPENAME", unique = true)
     private String name;
     private String type;
 

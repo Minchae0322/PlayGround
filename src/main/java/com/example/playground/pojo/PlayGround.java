@@ -22,8 +22,8 @@ public class PlayGround {
     @Column(name = "PLAYGROUND_NAME", unique = true)
     private String name;
     @OneToOne
-    @JoinColumn(name = "PLAYGROUND_NAME2")
-    private PlayGroundType playGroundName;
+    @JoinColumn(name = "PLAYGROUND_TYPENAME")
+    private PlayGroundType playGroundTypeName;
 
     @Builder
     public PlayGround(Long id, String name) {
