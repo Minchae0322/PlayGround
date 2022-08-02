@@ -65,10 +65,10 @@ public class MemberTeamTest {
         Team team1 = Team.builder()
                 .teamName("team2").build();
         Member member1 = Member.builder()
-                .name("member2")
+                .username("member2")
                 .build();
         Member member2 = Member.builder()
-                .name("member3")
+                .username("member3")
                 .build();
         teamRepository.save(team1);
         member1.setTeam_id(team1);
@@ -79,7 +79,7 @@ public class MemberTeamTest {
 
 
         //entityManager.flush();
-        Optional<Member> member3 = memberRepository.findMemberByName("member3");
+        Optional<Member> member3 = memberRepository.findMemberByUsername("member3");
         Member member4 = member3.get();
         assertEquals("team2", member4.getTeam_id().getTeamName());
 
@@ -91,10 +91,10 @@ public class MemberTeamTest {
         Team team1 = Team.builder()
                 .teamName("team3").build();
         Member member1 = Member.builder()
-                .name("member4")
+                .username("member4")
                 .build();
         Member member2 = Member.builder()
-                .name("member5")
+                .username("member5")
                 .build();
         PlayGround playGround1 = PlayGround.builder()
                 .name("play1")
@@ -110,7 +110,7 @@ public class MemberTeamTest {
 
 
         entityManager.flush();
-        Optional<Member> member3 = memberRepository.findMemberByName("member4");
+        Optional<Member> member3 = memberRepository.findMemberByUsername("member4");
         Member member4 = member3.get();
         assertEquals("team3", member4.getTeam_id().getTeamName());
         assertEquals("play1", member4.getPlayGround_id().getName());

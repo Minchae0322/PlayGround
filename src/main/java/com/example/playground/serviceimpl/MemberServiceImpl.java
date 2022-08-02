@@ -43,8 +43,9 @@ public class MemberServiceImpl implements MemberService, UserDetailsService {
         List<GrantedAuthority> authorities = new ArrayList<>();
         System.out.println(user.getUsername() + " " + user.getPassword());
 
-        if (username.equals("admin")) {
+        if (username.equals("ROLE_ADMIN")) {
             authorities.add(new SimpleGrantedAuthority(Role.ADMIN.getValue()));
+        } else {
             authorities.add(new SimpleGrantedAuthority(Role.MEMBER.getValue()));
         }
         return new User(user.getUsername(), user.getPassword(), authorities);
