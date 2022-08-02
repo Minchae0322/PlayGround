@@ -18,11 +18,10 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class MemberServiceImpl implements MemberService, UserDetailsService {
-    private MemberRepository memberRepository;
+    private final MemberRepository memberRepository;
 
     @Autowired
     public MemberServiceImpl(MemberRepository userRepository) {
@@ -37,21 +36,17 @@ public class MemberServiceImpl implements MemberService, UserDetailsService {
         return memberRepository.save(memberDto.toEntity()).getId();
     }
 
-    @Override
-    public Optional<MemberDto> login(MemberDto memberDto) {
-        return null;
-    }
-
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        Member user = memberRepository.findMemberByName(username).get();
+        Member user = memberRepository.findMemberByUsername(username).get();
         List<GrantedAuthority> authorities = new ArrayList<>();
+        System.out.println(user.getUsername() + " " + user.getPassword());
 
         if (username.equals("admin")) {
             authorities.add(new SimpleGrantedAuthority(Role.ADMIN.getValue()));
             authorities.add(new SimpleGrantedAuthority(Role.MEMBER.getValue()));
         }
-        return new User(user.getName(), user.getPassword(), authorities);
+        return new User(user.getUsername(), user.getPassword(), authorities);
     }
 }

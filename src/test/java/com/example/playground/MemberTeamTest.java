@@ -44,19 +44,18 @@ public class MemberTeamTest {
     @Transactional
     public void playGroundTypeTest() {
         PlayGroundType playGroundType1 = PlayGroundType.builder()
-                .name("캠퍼스2농구장")
+                .name("캠퍼스4농구장")
                 .type("농구장").build();
+        //entityManager.persist(playGroundType1);
         playGroundTypeRepository.save(playGroundType1);
-
         entityManager.flush();
 
+
         PlayGround playGround1 = PlayGround.builder()
-                .name("캠퍼스2농구장").build();
-        playGround1.setPlayGroundTypeName(playGroundTypeRepository.findPlayGroundTypeByName("캠퍼스2농구장").get());
+                .name("캠퍼스4농구장").build();
+        playGround1.setPlayGroundTypeName(playGroundTypeRepository.findPlayGroundTypeByName("캠퍼스4농구장").get());
 
         assertEquals("농구장", playGround1.getPlayGroundTypeName().getType());
-
-
 
     }
 
@@ -79,7 +78,7 @@ public class MemberTeamTest {
         memberRepository.save(member2);
 
 
-        entityManager.flush();
+        //entityManager.flush();
         Optional<Member> member3 = memberRepository.findMemberByName("member3");
         Member member4 = member3.get();
         assertEquals("team2", member4.getTeam_id().getTeamName());

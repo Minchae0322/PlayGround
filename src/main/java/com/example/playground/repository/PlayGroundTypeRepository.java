@@ -6,6 +6,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;
 
-public interface PlayGroundTypeRepository extends JpaRepository<PlayGroundType, Long> {
+public interface PlayGroundTypeRepository extends JpaRepository<PlayGroundType, String> {
     Optional<PlayGroundType> findPlayGroundTypeByName(String name);
 }

@@ -16,9 +16,6 @@ import javax.persistence.*;
 public class PlayGroundType {
     @Id
     @NotNull
-    @GeneratedValue
-    private Long id;
-    @NotNull
     @Column(name = "PLAYGROUND_TYPENAME", unique = true)
     private String name;
     private String type;

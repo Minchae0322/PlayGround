@@ -20,11 +20,15 @@ public class Team {
     @NotNull
     private String teamName;
     private String image;
+    private Integer win;
+    private Integer lose;
 
     @Builder
-    public Team(Long id, String teamName, String image) {
+    public Team(Long id, String teamName, String image, Integer win, Integer lose) {
         this.id = id;
         this.teamName = teamName;
         this.image = image;
+        this.win = win;
+        this.lose = lose;
     }
 }

@@ -9,5 +9,4 @@ import java.util.Optional;
 public interface MemberService {
     @Transactional
     Long signUp(MemberDto memberDto);
-    Optional<MemberDto> login(MemberDto memberDto);
 }
