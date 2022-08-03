@@ -27,14 +27,14 @@ public class Member {
     @ManyToOne
     @Nullable
     @JoinColumn(name = "TEAM_ID")
-    private Team team_id;
+    private Team team;
     @ManyToOne
     @Nullable
     @JoinColumn(name = "PLAYGROUND_ID")
     private PlayGround playGround_id;
 
     @Builder
-    public Member(Long id, String username, String password, String authority, String email, String phoneNum, Sex sex, Team team_id, PlayGround playGround_id) {
+    public Member(Long id, String username, String password, String authority, String email, String phoneNum, Sex sex, Team team, PlayGround playGround_id) {
         this.id = id;
         this.username = username;
         this.password = password;
@@ -42,7 +42,7 @@ public class Member {
         this.email = email;
         this.phoneNum = phoneNum;
         this.sex = sex;
-        this.team_id = team_id;
+        this.team = team;
         this.playGround_id = playGround_id;
     }
 }

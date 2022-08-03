@@ -18,6 +18,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class MemberServiceImpl implements MemberService, UserDetailsService {
@@ -39,7 +40,8 @@ public class MemberServiceImpl implements MemberService, UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        Member user = memberRepository.findMemberByUsername(username).get();
+        Optional<Member> memberWrapper = memberRepository.findMemberByUsername(username);
+        Member user = memberWrapper.get();
         List<GrantedAuthority> authorities = new ArrayList<>();
         System.out.println(user.getUsername() + " " + user.getPassword());
 

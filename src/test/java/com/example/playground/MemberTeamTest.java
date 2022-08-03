@@ -71,8 +71,8 @@ public class MemberTeamTest {
                 .username("member3")
                 .build();
         teamRepository.save(team1);
-        member1.setTeam_id(team1);
-        member2.setTeam_id(team1);
+        member1.setTeam(team1);
+        member2.setTeam(team1);
 
         memberRepository.save(member1);
         memberRepository.save(member2);
@@ -81,7 +81,7 @@ public class MemberTeamTest {
         //entityManager.flush();
         Optional<Member> member3 = memberRepository.findMemberByUsername("member3");
         Member member4 = member3.get();
-        assertEquals("team2", member4.getTeam_id().getTeamName());
+        assertEquals("team2", member4.getTeam().getTeamName());
 
     }
 
@@ -101,8 +101,8 @@ public class MemberTeamTest {
                 .build();
         playGroundRepository.save(playGround1);
         teamRepository.save(team1);
-        member1.setTeam_id(team1);
-        member2.setTeam_id(team1);
+        member1.setTeam(team1);
+        member2.setTeam(team1);
         member1.setPlayGround_id(playGround1);
         member2.setPlayGround_id(playGround1);
         memberRepository.save(member1);
@@ -112,7 +112,7 @@ public class MemberTeamTest {
         entityManager.flush();
         Optional<Member> member3 = memberRepository.findMemberByUsername("member4");
         Member member4 = member3.get();
-        assertEquals("team3", member4.getTeam_id().getTeamName());
+        assertEquals("team3", member4.getTeam().getTeamName());
         assertEquals("play1", member4.getPlayGround_id().getName());
 
     }

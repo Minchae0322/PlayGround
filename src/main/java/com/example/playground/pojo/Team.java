@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Getter
 @Setter
@@ -19,6 +20,8 @@ public class Team {
     private Long id;
     @NotNull
     private String teamName;
+    @OneToMany(mappedBy = "team")
+    private List<Member> members;
     private String image;
     private Integer win;
     private Integer lose;
