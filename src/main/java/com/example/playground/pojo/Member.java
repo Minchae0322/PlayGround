@@ -8,6 +8,8 @@ import lombok.Setter;
 import org.springframework.lang.Nullable;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Getter
 @Setter
@@ -33,9 +35,13 @@ public class Member {
     @Nullable
     @JoinColumn(name = "PLAYGROUND_ID")
     private PlayGround playGround_id;
+    @Nullable
+    @OneToMany(mappedBy = "member")
+    private List<Reservation> reservation = new ArrayList<>();
+
 
     @Builder
-    public Member(Long id, String username, String password, String authority, String email, String phoneNum, Sex sex, Team team, PlayGround playGround_id) {
+    public Member(Long id, String username, String password, String authority, String email, String phoneNum, Sex sex, @Nullable Team team, @Nullable PlayGround playGround_id, @Nullable List<Reservation> reservation) {
         this.id = id;
         this.username = username;
         this.password = password;
@@ -45,5 +51,6 @@ public class Member {
         this.sex = sex;
         this.team = team;
         this.playGround_id = playGround_id;
+        this.reservation = reservation;
     }
 }

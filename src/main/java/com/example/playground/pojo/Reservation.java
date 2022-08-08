@@ -6,9 +6,11 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.lang.Nullable;
 
 import javax.persistence.*;
+import java.util.Date;
 
 @NoArgsConstructor
 @Getter
@@ -19,7 +21,7 @@ public class Reservation {
     @GeneratedValue
     private Long id;
     @Nullable
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "MEMBER_ID")
     private Member member;
     @Nullable
@@ -30,15 +32,20 @@ public class Reservation {
     @OneToOne
     @JoinColumn(name = "PLAYGROUND_ID")
     private PlayGround playGround;
-    private String date;
-    private String expiredDate;
+    @NotNull
+    private String side;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private Date date;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private Date expiredDate;
 
     @Builder
-    public Reservation(Long id, @Nullable Member member, @Nullable Team team, PlayGround playGround, String date, String expiredDate) {
+    public Reservation(Long id, @Nullable Member member, @Nullable Team team, PlayGround playGround, String side, Date date, Date expiredDate) {
         this.id = id;
         this.member = member;
         this.team = team;
         this.playGround = playGround;
+        this.side = side;
         this.date = date;
         this.expiredDate = expiredDate;
     }

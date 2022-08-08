@@ -24,10 +24,17 @@ public class PlayGround {
     @OneToOne
     @JoinColumn(name = "PLAYGROUND_TYPENAME")
     private PlayGroundType playGroundTypeName;
+    @NotNull
+    private String location;
+    @NotNull
+    private int maxPopulationOfOneSide;
 
     @Builder
-    public PlayGround(Long id, String name) {
+    public PlayGround(Long id, String name, PlayGroundType playGroundTypeName, String location, int maxPopulationOfOneSide) {
         Id = id;
         this.name = name;
+        this.playGroundTypeName = playGroundTypeName;
+        this.location = location;
+        this.maxPopulationOfOneSide = maxPopulationOfOneSide;
     }
 }
