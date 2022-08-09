@@ -19,7 +19,6 @@ public class MemberDto {
     private String phoneNum;
     private Sex sex;
     private Team team_id;
-    private PlayGround playGround_id;
     private List<Reservation> reservationList;
 
     public Member toEntity() {
@@ -32,13 +31,12 @@ public class MemberDto {
                 .phoneNum(phoneNum)
                 .sex(sex)
                 .team(team_id)
-                .playGround_id(playGround_id)
                 .reservation(reservationList)
                 .build();
     }
 
     @Builder
-    public MemberDto(Long id, String username, String password, String authority, String email, String phoneNum, Sex sex, Team team_id, PlayGround playGround_id, List<Reservation> reservationList) {
+    public MemberDto(Long id, String username, String password, String authority, String email, String phoneNum, Sex sex, Team team_id, List<Reservation> reservationList) {
         this.id = id;
         this.username = username;
         this.password = password;
@@ -47,8 +45,6 @@ public class MemberDto {
         this.phoneNum = phoneNum;
         this.sex = sex;
         this.team_id = team_id;
-        this.playGround_id = playGround_id;
         this.reservationList = reservationList;
     }
-
 }

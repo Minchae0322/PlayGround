@@ -1,7 +1,7 @@
 package com.example.playground.serviceimpl;
 
 import com.example.playground.pojo.Member;
-import com.example.playground.pojo.PlayGround;
+import com.example.playground.pojo.playground.Playground;
 import com.example.playground.pojo.Reservation;
 import com.example.playground.pojo.Team;
 import com.example.playground.repository.ReservationRepository;
@@ -19,17 +19,8 @@ public class ReservationService implements com.example.playground.service.Reserv
     }
 
     @Override
-    public Optional<Reservation> reserveMember(Member member, PlayGround playGround, Date start, Date end) {
-        if(isOverlapTime(member,start, end) && )
-        reservation.ifPresent(r -> {
-            if (isOverlapTime(r, start, end)) {
-                reservationRepository.save(Reservation.builder()
-                        .member(member)
-                        .date(start)
-                        .expiredDate(end)
-                        .build());
-            }});
-        return Optional.empty();
+    public Optional<Reservation> reserveMember(Member member, Playground playGround, Date start, Date end) {
+        return null;
     }
 
     @Override

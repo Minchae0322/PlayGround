@@ -1,6 +1,7 @@
 package com.example.playground.pojo;
 
 
+import com.example.playground.pojo.playground.Playground;
 import com.sun.istack.NotNull;
 import lombok.Builder;
 import lombok.Getter;
@@ -31,7 +32,7 @@ public class Reservation {
     @NotNull
     @OneToOne
     @JoinColumn(name = "PLAYGROUND_ID")
-    private PlayGround playGround;
+    private Playground playGround;
     @NotNull
     private String side;
     @DateTimeFormat(pattern = "yyyy-MM-dd")
@@ -40,7 +41,7 @@ public class Reservation {
     private Date expiredDate;
 
     @Builder
-    public Reservation(Long id, @Nullable Member member, @Nullable Team team, PlayGround playGround, String side, Date date, Date expiredDate) {
+    public Reservation(Long id, @Nullable Member member, @Nullable Team team, Playground playGround, String side, Date date, Date expiredDate) {
         this.id = id;
         this.member = member;
         this.team = team;
