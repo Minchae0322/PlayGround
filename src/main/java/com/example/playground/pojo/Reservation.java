@@ -1,7 +1,7 @@
 package com.example.playground.pojo;
 
 
-import com.example.playground.pojo.playground.Playground;
+import com.example.playground.pojo.playgroundpojo.Playground;
 import com.sun.istack.NotNull;
 import lombok.Builder;
 import lombok.Getter;

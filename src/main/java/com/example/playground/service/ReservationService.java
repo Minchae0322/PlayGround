@@ -1,7 +1,7 @@
 package com.example.playground.service;
 
 import com.example.playground.pojo.Member;
-import com.example.playground.pojo.playground.Playground;
+import com.example.playground.pojo.playgroundpojo.Playground;
 import com.example.playground.pojo.Reservation;
 import com.example.playground.pojo.Team;
 

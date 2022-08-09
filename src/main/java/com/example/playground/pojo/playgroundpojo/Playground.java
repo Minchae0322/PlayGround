@@ -1,4 +1,4 @@
-package com.example.playground.pojo.playground;
+package com.example.playground.pojo.playgroundpojo;
 
 import com.example.playground.pojo.Reservation;
 import com.sun.istack.NotNull;
@@ -12,12 +12,12 @@ import javax.persistence.*;
 @NoArgsConstructor
 @Inheritance(strategy = InheritanceType.JOINED)
 @DiscriminatorColumn(name = "playgroundType")
-@Entity(name = "PlayGround")
+@Entity(name = "Playground")
 public abstract class Playground {
     @Id
     @GeneratedValue
     @Column(name = "PLAYGROUND_ID")
-    private Long Id;
+    private Long id;
     @NotNull
     @Column(name = "PLAYGROUND_NAME", unique = true)
     private String name;

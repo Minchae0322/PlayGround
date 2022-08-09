@@ -1,4 +1,4 @@
-package com.example.playground.pojo.playground;
+package com.example.playground.pojo.playgroundpojo;
 
 import com.example.playground.pojo.Reservation;
 import lombok.Builder;
