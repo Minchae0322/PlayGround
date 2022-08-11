@@ -10,6 +10,7 @@
 <a sec:authorize="isAnonymous()" th:href="@{/login}">로그인</a>
 <a sec:authorize="isAuthenticated()" th:href="@{/logout}">로그아웃</a>
 <a sec:authorize="isAnonymous()" th:href="@{/member/signup}">회원가입</a>
-<a sec:authorize="isAnonymous()" th:href="@{/member/signup}">마이페이지</a>
+<a sec:authorize="isAuthenticated()" th:href="@{/member/info}">마이페이지</a>
+<a sec:authorize="isAuthenticated()" th:href="@{/playground/select}">운동장 생성</a>
 </body>
 </html>

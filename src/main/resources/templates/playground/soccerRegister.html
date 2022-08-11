@@ -1,0 +1,21 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>SignUp</title>
+</head>
+<body>
+<h1>회원가입</h1>
+<hr>
+<div>
+    <div>운동장 유형</div>
+</div>
+<form action="/playground/soccerRegister" th:object="${playground}" method="post">
+    <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+
+    <input type="text" th:field="*{name}" placeholder="운동장 이름">
+    <input type="text" th:field="*{location}" placeholder="장소">
+    <input type="text" th:field="*{maxPopulation}" placeholder="최대인원 수">
+    <button type="submit">등록</button>
+</form>
+</body>
+</html>

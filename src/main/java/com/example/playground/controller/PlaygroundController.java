@@ -1,11 +1,14 @@
 package com.example.playground.controller;
 
+import com.example.playground.pojo.playgroundpojo.Playground;
+import com.example.playground.pojo.playgroundpojo.SoccerField;
+import com.example.playground.pojo.playgroundpojo.SoccerFieldDto;
 import com.example.playground.service.PlaygroundService;
-import com.example.playground.serviceimpl.PlaygroundServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
 public class PlaygroundController {
@@ -17,11 +20,21 @@ public class PlaygroundController {
     }
 
 
-    @GetMapping("/playground")
-    public String playgroundHome(Model model) {
-        //List<PlayGround> playGroundList = playGroundService.getPlaygroundList("哈尔滨工业大学");
-        //model.addAttribute("playgroundList", playGroundList);
-        return "/playground/playground";
+    @GetMapping("/playground/soccerRegister")
+    public String registerSoccerFieldForm(Model model) {
+        model.addAttribute("playground", SoccerFieldDto.builder().build());
+        return "playground/soccerRegister";
+    }
+
+    @PostMapping("/playground/soccerRegister")
+    public String registerSoccerField(SoccerFieldDto soccerFieldDto) {
+        playgroundService.register(soccerFieldDto.toEntity());
+        return "redirect:/";
+    }
+
+    @GetMapping("/playground/select")
+    public String selectField(SoccerFieldDto soccerFieldDto) {
+        return "playground/select";
     }
 
 

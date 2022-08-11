@@ -46,6 +46,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                         .deleteCookies("JSESSIONID", "SOME", "OTHER", "COOKIE")
                 .and()
                 .exceptionHandling();
+                http.cors().and();
+                http.cors().disable();
     }
 
     @Override
