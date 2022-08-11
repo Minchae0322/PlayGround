@@ -32,6 +32,7 @@ public class MemberServiceImpl implements MemberService, UserDetailsService {
     @Override
     @Transactional
     public Long signUp(MemberDto memberDto) {
+        validateMemberDuplicate(memberDto);
         BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
         memberDto.setPassword(passwordEncoder.encode(memberDto.getPassword()));
         return memberRepository.save(memberDto.toEntity()).getId();
@@ -51,5 +52,12 @@ public class MemberServiceImpl implements MemberService, UserDetailsService {
             authorities.add(new SimpleGrantedAuthority(Role.MEMBER.getValue()));
         }
         return new User(user.getUsername(), user.getPassword(), authorities);
+    }
+
+    private void validateMemberDuplicate(MemberDto member) {
+        memberRepository.findMemberByUsername(member.getUsername())
+                .ifPresent(m -> {
+                    throw new IllegalArgumentException("중복회원 입니다");
+                });
     }
 }
